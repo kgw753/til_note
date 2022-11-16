@@ -1,4 +1,4 @@
-import User from "./models/User.js";
+import User from "./models/User";
 
 const resolvers = {
   Query: {
@@ -6,13 +6,13 @@ const resolvers = {
       const users = await User.find();
       return users;
     },
-    userById: async (root, args) => {
+    userById: async (root: any, args: any) => {
       const user = await User.findById(args.id);
       return user;
     },
   },
   Mutation: {
-    createUser: async (root, args) => {
+    createUser: async (root: any, args: any) => {
       const newUser = new User({
         name: args.name,
         phone: args.phone,
@@ -21,11 +21,11 @@ const resolvers = {
       return newUser;
     },
 
-    deleteUserById: async (root, args) => {
+    deleteUserById: async (root: any, args: any) => {
       return User.findByIdAndDelete(args.id);
     },
 
-    updateUser: async (root, args) => {
+    updateUser: async (root: any, args: any) => {
       const { id, name, phone } = args;
       const updatedUser = { name, phone };
       if (name !== undefined) {
