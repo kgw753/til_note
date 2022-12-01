@@ -1,10 +1,13 @@
 import mongoose from "mongoose";
+import { ObjectId } from "mongodb";
 
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  _id: ObjectId,
   name: String,
-  phone: String,
+  type: String,
+  authToken: String
 });
 
 const User = mongoose.model("user", userSchema);
